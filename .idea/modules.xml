@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Aula_1/Aula_1.iml" filepath="$PROJECT_DIR$/Aula_1/Aula_1.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aula_11/Aula_11.iml" filepath="$PROJECT_DIR$/Aula_11/Aula_11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Aula_12/Aula_12.iml" filepath="$PROJECT_DIR$/Aula_12/Aula_12.iml" />
       <module fileurl="file://$PROJECT_DIR$/Aula_2/Aula_2.iml" filepath="$PROJECT_DIR$/Aula_2/Aula_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/programacao_orientada_objetos.iml" filepath="$PROJECT_DIR$/.idea/programacao_orientada_objetos.iml" />
     </modules>
