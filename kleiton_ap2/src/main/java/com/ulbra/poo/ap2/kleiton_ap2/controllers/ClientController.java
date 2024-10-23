@@ -2,11 +2,7 @@ package com.ulbra.poo.ap2.kleiton_ap2.controllers;
 
 import com.ulbra.poo.ap2.kleiton_ap2.models.Client;
 import com.ulbra.poo.ap2.kleiton_ap2.services.SearchClientService;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,19 +16,36 @@ public class ClientController {
     }
 
     @GetMapping("/clients")
-    public List<Client> getClients() {
-        return service.searchingClients();
+    public List<Client> getClients(@RequestParam(required = false) Integer age) {
+        if (age != null) {
+            return service.getClientsAge(age);
+        }
+        return service.getClients();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id") Long id){
-        Optional<Product> existingProduct = this.productService.findById(id);
-        if(existingProduct.isPresent()){
-            this.productService.delete(existingProduct.get());
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
+    @GetMapping("/clients/{id}")
+    public Client getClientsId(@PathVariable int id) {
+        return service.getClientsId(id);
     }
+
+    @DeleteMapping("/clients/{id}")
+    public void deleteClients(@PathVariable int id) {
+        service.deleteClients(id);
+    }
+
+    @PostMapping("/clients/{id}/{name}/{age}/{profession}")
+    public void setClients(@PathVariable int id, @PathVariable String name, @PathVariable int age, @PathVariable String profession) {
+        Client client = new Client(id, name, age, profession);
+        service.setClients(client);
+    }
+
+    @PutMapping("/clients/{id}/{name}/{age}/{profession}")
+    public void updateClients(@PathVariable int id, @PathVariable String name, @PathVariable int age, @PathVariable String profession) {
+        service.updateClients(id, name, age, profession);
+    }
+
+
+
 
 
 }
